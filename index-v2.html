@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antioch International Ministry - Sunday Service Counter</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Sunday Service Attendance Counter for Antioch International Ministry">
+    <meta name="theme-color" content="#2d5a7a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sunday Counter">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
+    
+    <!-- PWA Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+    
+    <!-- PWA Theme -->
+    <meta name="msapplication-TileColor" content="#2d5a7a">
+    <meta name="msapplication-TileImage" content="icon-192.png">
+    
+    <link rel="stylesheet" href="styles-v2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="aim-logo.svg" alt="AIM Logo" class="logo-image">
+            </div>
+            <div class="title">
+                <h1>Antioch International Ministry</h1>
+                <p>SOOYOUNGRO CHURCH</p>
+            </div>
+        </div>
+        
+        <main>
+            <div class="counters-section">
+                <!-- Korean Counter -->
+                <div class="counter-group men-counter">
+                    <h2> Korean</h2>
+                    <div class="counter-display">
+                        <div class="counter-digits">
+                            <span id="menCounter">000000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="clicker-button men-btn" id="menClickerBtn">
+                        <div class="button-inner">
+                            <span>KOREAN</span>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button class="control-btn reset-btn" id="menResetBtn">
+                            <span>RESET</span>
+                        </button>
+                        <button class="control-btn undo-btn" id="menUndoBtn">
+                            <span>UNDO</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Foreigner Counter -->
+                <div class="counter-group women-counter">
+                    <h2> Foreigner</h2>
+                    <div class="counter-display">
+                        <div class="counter-digits">
+                            <span id="womenCounter">000000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="clicker-button women-btn" id="womenClickerBtn">
+                        <div class="button-inner">
+                            <span>FOREIGNER</span>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button class="control-btn reset-btn" id="womenResetBtn">
+                            <span>RESET</span>
+                        </button>
+                        <button class="control-btn undo-btn" id="womenUndoBtn">
+                            <span>UNDO</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Combined Stats -->
+            <div class="combined-stats">
+                <h3>📊 Sunday Service Statistics</h3>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Korean Today</span>
+                        <span class="stat-value" id="totalMen">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Foreigner Today</span>
+                        <span class="stat-value" id="totalWomen">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Today</span>
+                        <span class="stat-value" id="combinedTotal">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">This Sunday</span>
+                        <span class="stat-value" id="todayTotal">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Export Controls -->
+            <div class="export-controls">
+                <button class="control-btn export-btn" id="exportBtn">
+                    <span>📊 EXPORT STATS</span>
+                </button>
+                <button class="control-btn download-btn" id="downloadBtn">
+                    <span>💾 DOWNLOAD DATA</span>
+                </button>
+                <button class="control-btn view-btn" id="viewBtn">
+                    <span>👁️ VIEW HISTORY</span>
+                </button>
+                <button class="control-btn share-btn" id="shareBtn">
+                    <span>📧 SEND STATS</span>
+                </button>
+            </div>
+            
+            <!-- Global Controls -->
+            <div class="global-controls">
+                <button class="control-btn global-reset-btn" id="globalResetBtn">
+                    <span>RESET SUNDAY</span>
+                </button>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Antioch International Ministry - Sunday Service Counter</p>
+        </footer>
+    </div>
+    
+    <script src="script-v2.js"></script>
+</body>
+</html> 
