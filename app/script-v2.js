@@ -1,7 +1,7 @@
 // Register Service Worker for PWA
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('../sw.js')
             .then(registration => {
                 console.log('SW registered: ', registration);
             })
@@ -28,7 +28,6 @@ class SundayServiceCounter {
         this.loadFromLocalStorage();
         this.updateDisplay();
         this.setupEventListeners();
-        this.updateCurrentDate();
     }
     
     initializeElements() {
@@ -44,38 +43,11 @@ class SundayServiceCounter {
         this.foreignerResetBtn = document.getElementById('womenResetBtn');
         this.foreignerUndoBtn = document.getElementById('womenUndoBtn');
         
-        // Combined stats elements
-        this.totalKoreanElement = document.getElementById('totalMen');
-        this.totalForeignerElement = document.getElementById('totalWomen');
-        this.combinedTotalElement = document.getElementById('combinedTotal');
-        this.todayTotalElement = document.getElementById('todayTotal');
-        
         // Global controls
         this.globalResetBtn = document.getElementById('globalResetBtn');
-        
-        // Export controls
-        this.exportBtn = document.getElementById('exportBtn');
-        this.downloadBtn = document.getElementById('downloadBtn');
-        this.viewBtn = document.getElementById('viewBtn');
-        this.shareBtn = document.getElementById('shareBtn');
-        
-        // Date display
-        this.currentDateElement = document.getElementById('currentDate');
     }
     
-    updateCurrentDate() {
-        const now = new Date();
-        const options = { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        };
-        const dateString = now.toLocaleDateString('en-US', options);
-        if (this.currentDateElement) {
-            this.currentDateElement.textContent = dateString;
-        }
-    }
+
     
     setupEventListeners() {
         // Korean counter events
@@ -90,12 +62,6 @@ class SundayServiceCounter {
         
         // Global reset
         this.globalResetBtn.addEventListener('click', () => this.resetSunday());
-        
-        // Export events
-        this.exportBtn.addEventListener('click', () => this.exportStats());
-        this.downloadBtn.addEventListener('click', () => this.downloadData());
-        this.viewBtn.addEventListener('click', () => this.viewHistory());
-        this.shareBtn.addEventListener('click', () => this.shareStats());
         
         // Keyboard support
         document.addEventListener('keydown', (e) => {
@@ -247,12 +213,6 @@ class SundayServiceCounter {
         // Update individual counters
         this.koreanCounterElement.textContent = this.koreanCount.toString().padStart(6, '0');
         this.foreignerCounterElement.textContent = this.foreignerCount.toString().padStart(6, '0');
-        
-        // Update combined stats
-        this.totalKoreanElement.textContent = this.totalKoreanClicks;
-        this.totalForeignerElement.textContent = this.totalForeignerClicks;
-        this.combinedTotalElement.textContent = this.totalKoreanClicks + this.totalForeignerClicks;
-        this.todayTotalElement.textContent = this.koreanClicksToday + this.foreignerClicksToday;
         
         // Enable/disable undo buttons
         this.koreanUndoBtn.disabled = this.koreanHistory.length === 0;
